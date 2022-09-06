@@ -11,11 +11,11 @@ RSpec.describe 'max_by' do
   end
 
   # This one is missing the block inside the loop.
-  xit 'shortest word' do
+  it 'shortest word' do
     words = ["apple", "banana", "cherry", "date", "eggplant"]
 
     found_word = words.max_by do |word|
-      # write code here
+      word.length < word.length
     end
 
     expect(found_word).to eq("date")
