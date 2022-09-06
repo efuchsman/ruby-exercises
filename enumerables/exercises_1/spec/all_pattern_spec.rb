@@ -28,49 +28,73 @@ RSpec.describe 'All Pattern' do
 
   it 'not all gone' do
     words = %w[gone gone gone gone gone there gone gone]
-
+    all_gone = true
+    words.each do |word|
+      all_gone = false unless word == 'gone'
+    end
     expect(all_gone).to eq(false)
   end
 
-  xit 'all empty' do
+  it 'all empty' do
     strings = ['', '', '', '', '', '', '']
-    # Your code goes here
+    all_empty = true
+    strings.each do |string|
+      all_empty = false unless string.empty?
+    end
     expect(all_empty).to eq(true)
   end
 
-  xit 'not all empty' do
+  it 'not all empty' do
     strings = ['', '', '', 'full', '', '', '']
-    # Your code goes here
+    all_empty = true
+    strings.each do |string|
+      all_empty = false unless string.empty?
+    end
     expect(all_empty).to eq(false)
   end
 
-  xit 'not all uppercase' do
+  it 'not all uppercase' do
     words = %w[DOUGHNUT CASH MAIN bOWl SMACK SAND]
-    # Your code goes here
+    all_caps = true
+    words.each do |word|
+      all_caps = false if word.upcase
+    end
     expect(all_caps).to eq(false)
   end
 
-  xit 'all lies' do
+  it 'all lies' do
     lies = [false, false, false, false]
-    # Your code goes here
+    all_lies = true
+    lies.each do |lie|
+      all_lies = false unless lie == false
+    end
     expect(all_lies).to eq(true)
   end
 
-  xit 'all multiples of seven' do
+  it 'all multiples of seven' do
     numbers = [42, 14, 35, 49, 28, 56, 21, 7]
-    # Your code goes here
+    all_multiples_of_7 = true
+    numbers.each do |number|
+      all_multiples_of_7 = false unless number % 7 == 0
+    end
     expect(all_multiples_of_7).to eq(true)
   end
 
-  xit 'not all 3 digits long' do
+  it 'not all 3 digits long' do
     numbers = [981, 831, 509, 332, 892, 8999, 110]
-    # Your code goes here
+    all_3_digits = true
+    numbers.each do |number|
+      all_3_digits = false unless number.digits.count == 3
+    end
     expect(all_3_digits).to eq(false)
   end
 
-  xit 'all four letter words' do
+  it 'all four letter words' do
     words = %w[love hate fire bird call]
-    # Your code goes here
+    all_4_letters = true
+    words.each do |word|
+      all_4_letters = false unless word.length == 4
+    end
     expect(all_4_letters).to eq(true)
   end
 end
