@@ -30,30 +30,35 @@ RSpec.describe 'reduce' do
     # initial value is 'one fish two fish red fish blue fish'
     result = keywords.reduce('one fish two fish red fish blue fish') do |memo, keyword|
 
-
-
+     memo.gsub(keyword, keyword.upcase)
     end
     expect(result).to eq('one FISH two FISH red FISH BLUE FISH')
   end
 
-  xit 'divides 560 by a bunch of numbers' do
+  it 'divides 560 by a bunch of numbers' do
     numbers = [2, 2, 2, 5, 7]
     # initial value is 560
-    # Your code goes here
+    result = numbers.reduce(560) do |divide, number|
+      divide/number
+    end
     expect(result).to eq(2)
   end
 
-  xit 'subtract smallest values from 100' do
+  it 'subtract smallest values from 100' do
     elements = [[8, 5, 3], [1, 9, 11], [4, 7, 2], [19, 34, 6]]
     # initial value is 100
-    # Your code goes here
+   result = elements.reduce(100) do |hunnid, small|
+    hunnid - small.min
+   end
     expect(result).to eq(88)
   end
 
-  xit 'adds all second values together' do
+  it 'adds all second values together' do
     elements = [["a", 1], ["b", 9], ["c", 21]]
     # initial value is 0
-    # Your code goes here
+   result = elements.reduce(0) do |sum, element|
+    sum + element[1]
+   end
     expect(result).to eq(31)
   end
 end
