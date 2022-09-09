@@ -1,15 +1,15 @@
 class RollCall < Array
 
   def longest_name
-  previuous_name = 0
+  previous_name_length = 0
   longest_name = nil
 
     if self.length == 0
       nil
     else
       self.each do |name|
-        if name.length > previuous_name
-          previous_name = name.length
+        if name.length > previous_name_length
+          previous_name_length = name.length
           longest_name = name
         end
       end

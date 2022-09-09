@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative 'roll_call.rb'
+require_relative 'roll_call'
 
 RSpec.describe RollCall do
   it 'has no names' do
@@ -15,7 +15,7 @@ RSpec.describe RollCall do
     expect(roll_call.longest_name).to eq('Oda')
   end
 
-  xit 'has longest of several' do
+  it 'has longest of several' do
     roll_call = RollCall.new
     roll_call << "Ann"
     roll_call << "Alexandra"
