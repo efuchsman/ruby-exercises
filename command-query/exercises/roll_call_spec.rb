@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative 'roll_call'
+require "pry"
 
 RSpec.describe RollCall do
   it 'has no names' do
@@ -11,7 +12,7 @@ RSpec.describe RollCall do
     roll_call = RollCall.new
 
     roll_call << 'Oda'
-
+    # binding.pry
     expect(roll_call.longest_name).to eq('Oda')
   end
 

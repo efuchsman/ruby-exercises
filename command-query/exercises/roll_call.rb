@@ -1,4 +1,9 @@
 class RollCall < Array
+  attr_reader :roll_array
+  def initialize
+    @roll_array = []
+
+  end
 
   def longest_name
   previous_name_length = 0
