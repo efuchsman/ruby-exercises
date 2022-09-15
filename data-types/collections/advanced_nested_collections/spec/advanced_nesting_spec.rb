@@ -15,29 +15,42 @@ require_relative 'nesting'
 RSpec.describe 'Advanced Nested Collections' do
   it 'test 1' do
     # EXAMPLE
-    employees = stores[:olive_garden][:employees]
-
+    employees = []
+      stores[:olive_garden][:employees].each do |employee|
+        employees << employee
+    end
     expected = ["Jeff", "Zach", "Samantha"]
     expect(employees).to eq(expected)
   end
 
   it 'test 2' do
     # Find the ingredients for pancakes
-    pancake_ingredients = stores[:dennys][:dishes][0][:ingredients]
+    pancake_ingredients =[]
+    stores[:dennys][:dishes].each do |dish|
+     if dish[:name] == "Pancakes"
+      pancake_ingredients << dish[:ingredients]
+     end
+     pancake_ingredients = pancake_ingredients.flatten
+    end
     expected = ["Flour", "Eggs", "Milk", "Syrup"]
     expect(pancake_ingredients).to eq(expected)
   end
 
   it 'test 3' do
     # Find the price of risotto
-    risotto_price = stores[:olive_garden][:dishes][0][:price]
-
+    risotto_price = 0
+      stores[:olive_garden][:dishes].each do |dish|
+        if dish[:name] == "Risotto"
+          risotto_price = dish[:price]
+        end
+        risotto_price
+      end
     expect(risotto_price).to eq(12)
   end
 
-  it 'test 4' do
+  xit 'test 4' do
     # Find the ingredients for a Big Mac
-    big_mac_ingredients = stores[:macdonalds][:dishes][0][:ingredients]
+   stores[:macdonalds][:dishes][0][:ingredients]
 
     expected = ['Bun','Hamburger','Ketchup','pickles']
     expect(big_mac_ingredients).to eq(expected)
@@ -65,16 +78,29 @@ RSpec.describe 'Advanced Nested Collections' do
   it 'test 7' do
     # Return a list of employees across
     # all restaurants
-    employee_names = ____
+    employee_names = []
+     stores.each do |store, names|
+      employee_names << names[:employees]
+    end
+    employee_names = employee_names.flatten
 
     expected = ["Jeff", "Zach", "Samantha", "Bob", "Sue", "James", "Alvin", "Simon", "Theodore"]
     expect(employee_names).to eq(expected)
   end
 
-  xit 'test 8' do
+  it 'test 8' do
     # Return a list of all ingredients
     # across all restaurants
-    ingredients = ____
+    ingredients = []
+    dishes = []
+      stores.each do |store, names|
+        dishes << names[:dishes]
+    end.flatten
+    dishes = dishes.flatten
+    dishes.each do |vals|
+      ingredients << vals[:ingredients]
+    end.flatten
+    ingredients= ingredients.flatten
 
     expected = [
       "Rice",
@@ -96,6 +122,7 @@ RSpec.describe 'Advanced Nested Collections' do
       "Potatoes",
       "Salt"
     ]
+
     expect(ingredients).to eq(expected)
   end
 
